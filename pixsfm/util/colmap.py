@@ -34,7 +34,7 @@ def read_matches_from_db(
     id2name = db.image_id_to_name()
     desc = {}
     for image_id, r, c, data in db.execute("SELECT * FROM descriptors"):
-        desc[image_id] = blob_to_array(data, np.uint32, (-1, c))
+        desc[image_id] = blob_to_array(data, np.uint8, (-1, c))
     # only compute scores if descriptors are in database
     compute_scores = (len(desc) > 0)
     scores = [] if compute_scores else None
